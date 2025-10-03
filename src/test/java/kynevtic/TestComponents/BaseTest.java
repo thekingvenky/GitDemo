@@ -42,7 +42,9 @@ public class BaseTest {
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\\\main\\\\java\\\\kynevtic\\\\resources\\\\global.properties");
 		property.load(fis);
 		
-		String browser = property.getProperty("browser");
+		String browser = System.getProperty("browser") != null ? System.getProperty("browser") : property.getProperty("browser");		 
+				
+//		String browser = property.getProperty("browser");
 		
 		if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
